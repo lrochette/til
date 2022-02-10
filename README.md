@@ -9,8 +9,8 @@ Based on [TIL](https://github.com/jbranchaud)
 ---
 ## Categories
 
-* [Codefresh Classic](#classic)
-* [Codefresh CSDP](#csdp)
+* [Codefresh Classic](#codefresh-classic)
+* [Codefresh CSDP](#codefresh-csdp)
 * [Python](#python)
 * [Kubernetes](#kubernetes)
 * [Mac](#mac)
