@@ -2,9 +2,8 @@
 
 > Today I Learned
 
-Trying to collect some technical stuff I learn everyday so they can be shared and are easier to find
-.
-Based on [TIL](https://github.com/jbranchaud)
+Trying to collect some technical stuff I learn everyday so they can be shared and are easier to find.
+Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 
 ---
 ## Categories
