@@ -16,7 +16,8 @@ eksctl create nodegroup \
   --nodes-min 1 \
   --nodes-max 1 \
   --install-nvidia-plugin \
-  --node-type p3.2xlarge 
+  --node-type p3.2xlarge \
+  --instance-selector-gpus 1
   ```
   
   * Create a new Codefresh runtime environment (assuming existing runner)
@@ -27,20 +28,16 @@ eksctl create nodegroup \
   codefresh install runtime --runtime-kube-namespace  gpu
   codefresh attach runtime --agent-name eks_runner --agent-kube-namespace runner --runtime-name cf_onprem_eks/gpu --runtime-kube-namespace gpu --restart-agent
   ```
-   * EdGetit runtime Environment
+   * Edit runtime Environment
   ```
    cf get re cf_onprem_eks/gpu -o yaml > RE.yaml
   ```
-   * Add node selector and toleration
+   * Add node selector
  ```
  dockerDaemonScheduler:
   cluster:
-    nodeSelector:
-      nvidia.com/gpu: "true"
-    tolerations:
-    - key: "nvidia.com/gpu"
-      operator: "Exists"
-      effect: "NoSchedule"
+   nodeSelector:
+      eks.amazonaws.com/nodegroup: gpu-nodes
  ```
   * Patch Runtime environment
  ```
