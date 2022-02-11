@@ -16,6 +16,8 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 
 ### Codefresh Classic
 
+* [NVidia GPU runtime Environment](classic/gpu.md)
+
 ### Codefresh CSDP
 
 ### Python
