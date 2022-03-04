@@ -6,6 +6,17 @@ How to make a pipleine run on NVidia GPU enabled nodes
 
 * Create new node group
 
+| Instance Type	| Software	| EC2	| Total |
+| ---------- | ---| --- | --- | ------ |
+| p2.xlarge | $0.00 |	$0.90	| $0.90/hr |
+| p2.8xlarge | $0.00 |	$7.20	| $7.20/hr |
+| p2.16xlarge | $0.00 |	$14.40	| $14.40/hr |
+| p3.2xlarge | $0.00 |	$3.06	| $3.06/hr |
+| p3.8xlarge | $0.00 |	$12.24	| $12.24/hr |
+| p3.16xlarge | $0.00 |	$24.48	| $24.48/hr |
+| p3dn.24xlarge | $0.00 |	$31.212	| $31.212/hr |
+
+
 ```
 eksctl create nodegroup \
   --cluster onpremlr \
@@ -16,8 +27,7 @@ eksctl create nodegroup \
   --nodes-min 1 \
   --nodes-max 1 \
   --install-nvidia-plugin \
-  --node-type p3.2xlarge \
-  --instance-selector-gpus 1
+  --node-type p2.xlarge 
   ```
   
   * Create a new Codefresh runtime environment (assuming existing runner)
