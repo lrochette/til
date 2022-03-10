@@ -1,8 +1,8 @@
 # NVidia GPU enablement for runtime
 
-How to make a pipleine run on NVidia GPU enabled nodes 
+How to make a pipleine run on NVidia GPU enabled nodes
 
-## AWK/EKS
+## AWS/EKS
 
 * Create new node group
 
@@ -27,9 +27,9 @@ eksctl create nodegroup \
   --nodes-min 1 \
   --nodes-max 1 \
   --install-nvidia-plugin \
-  --node-type p2.xlarge 
+  --node-type p2.xlarge
   ```
-  
+
   * Create a new Codefresh runtime environment (assuming existing runner)
   assuming runner is already in namespace "runner"
   assuming agent is named eks_runner
@@ -53,5 +53,3 @@ eksctl create nodegroup \
  ```
  cf patch re -f RE.yaml
  ```
-    
-  
