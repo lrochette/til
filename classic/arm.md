@@ -2,6 +2,9 @@
 
 How to make a pipeline run on ARM nodes
 
+This reuses a an existing runner already setup for X86
+If you want a full Runner running X86, you can simply follow the [ARM Builds Documentation](https://codefresh.io/docs/docs/administration/codefresh-runner/#arm-builds) 
+
 ## AWK/EKS
 
 * Create new node group
@@ -50,7 +53,7 @@ eksctl create nodegroup \
    nodeSelector:
       kubernetes.io/arch: arm64
  ```
- 
+
   * Patch Runtime environment
  ```
  cf patch re -f RE.yaml
