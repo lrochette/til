@@ -15,9 +15,10 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 * [Mac](#mac)
 
 ### Codefresh Classic
-
-* [NVidia GPU runtime Environment](classic/gpu.md)
+* [Building ARM images with buildx](classic/buildx.md)
 * [ARM runtime Environment](classic/arm.md)
+* [NVidia GPU runtime Environment](classic/gpu.md)
+
 
 ### Codefresh CSDP
 
