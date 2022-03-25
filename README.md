@@ -15,6 +15,7 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 * [Mac](#mac)
 
 ### Codefresh Classic
+* [How to differentiate a restart build](classic/restart.md)
 * [Building ARM images with buildx](classic/buildx.md)
 * [ARM runtime Environment](classic/arm.md)
 * [NVidia GPU runtime Environment](classic/gpu.md)
