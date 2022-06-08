@@ -19,6 +19,7 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 * [Building ARM images with buildx](classic/buildx.md)
 * [ARM runtime Environment](classic/arm.md)
 * [NVidia GPU runtime Environment](classic/gpu.md)
+* [Pipelines associated to a RE](classic/pipelines_for_re.md)
 
 
 ### Codefresh CSDP
