@@ -1,0 +1,40 @@
+# EFS backed storage class
+
+How to setup your Runtime Environment (RE) with EFS to work over multi AZ.
+
+https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html#efs-create-filesystem
+
+
+
+For US-east 1
+
+helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
+    --namespace kube-system \
+    --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/aws-efs-csi-driver \
+    --set controller.serviceAccount.create=false \
+    --set controller.serviceAccount.name=efs-csi-controller-sa
+
+
+vpc_id=$(aws eks describe-cluster \
+        --name onpremlr \
+        --query "cluster.resourcesVpcConfig.vpcId" \
+        --output text\
+        --region us-east-1)
+
+export vpc_id="vpc-0aa89376dd72c272b"
+export file_system_id="fs-0a54b30d0fe6aeda2"
+export security_group_id="sg-003d2345c274d74b3"
+
+
+subnet-014b9c3448bf9eb64
+subnet-0ed63361cd5499be4
+
+aws efs create-mount-target \
+    --file-system-id $file_system_id \
+    --subnet-id subnet-014b9c3448bf9eb64 \
+    --security-groups $security_group_id --region us-east-1
+
+aws efs create-mount-target \
+    --file-system-id $file_system_id \
+    --subnet-id subnet-0ed63361cd5499be4 \
+    --security-groups $security_group_id --region us-east-1
