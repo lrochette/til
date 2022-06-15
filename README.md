@@ -29,9 +29,3 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 ### Kubernetes
 
 ### Mac
-New line
-New line
-New line
-New line
-New line
-New line
