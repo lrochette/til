@@ -1,0 +1,40 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["spot"]
+    - key: "node.kubernetes.io/instance-type"
+      operator: In
+      values: ["m5.medium", "m5.large", "m5.2xlarge"]
+    - key: "topology.kubernetes.io/region"
+      operator: In
+      values: ["us-east-1"]
+#
+# Maybe be needed below for runner and EBS storage class
+#
+    # - key: "topology.kubernetes.io/zone"
+    #   operator: In
+    #   values: ["us-east-1a", "us-east-1b"]
+    # - key: "alpha.eksctl.io/nodegroup-name"
+    #   operator: In
+    #   values: ["lr4-ng"]
+  limits:
+    resources:
+      cpu: 20
+  providerRef:
+    name: default
+  ttlSecondsAfterEmpty: 30
+---
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: default
+spec:
+  subnetSelector:
+    karpenter.sh/discovery: lr4
+  securityGroupSelector:
+    karpenter.sh/discovery: lr4

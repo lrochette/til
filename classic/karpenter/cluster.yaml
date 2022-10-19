@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: lr4
+  region: us-east-1
+  version: "1.21"
+  tags:
+    karpenter.sh/discovery: lr4
+managedNodeGroups:
+  - instanceType: m5.large
+    amiFamily: AmazonLinux2
+    name: lr4-ng
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 10
+iam:
+  withOIDC: true
