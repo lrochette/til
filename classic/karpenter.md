@@ -1,6 +1,6 @@
 # Karpenter
 
-## installaing Karpenter on Cluster
+## installing Karpenter on Cluster
 
 [Getting started](https://karpenter.sh/v0.18.0/getting-started/getting-started-with-eksctl/)
 
@@ -15,7 +15,7 @@ export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output te
 ### Create cluster
 
 ```
-eksctl create cluster -f karpenter/cluster.yaml
+eksctl create cluster -f /Users/lrochette/src/lrochette/til/classic/karpenter/cluster.yaml
 export CLUSTER_ENDPOINT="$(aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.endpoint" --output text)"
 ```
 ### Create the KarpenterNode IAM Role
@@ -80,4 +80,31 @@ helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --vers
 
 ```
 kubectl apply -f karpenter/provisioner.yaml
+```
+
+
+## Create Kubeconfig
+
+```
+aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $CLUSTER_NAME
+```
+
+## Delete Karpenter
+
+```
+export CLUSTER_NAME="lr4"
+
+helm uninstall karpenter --namespace karpenter
+eksctl delete iamserviceaccount --cluster ${CLUSTER_NAME} --name karpenter --namespace karpenter
+aws cloudformation delete-stack --stack-name Karpenter-${CLUSTER_NAME}
+aws ec2 describe-launch-templates \
+    | jq -r ".LaunchTemplates[].LaunchTemplateName" \
+    | grep -i Karpenter-${CLUSTER_NAME} \
+    | xargs -I{} aws ec2 delete-launch-template --launch-template-name {}
+
+k delete -f ~/src/v2/Setup/nlb-with-tls-termination-1.3.1.yaml
+k delete ns karpenter ingress-nginx
+eksctl delete ng ${CLUSTER_NAME}-ng --cluster ${CLUSTER_NAME} --drain=false --wait
+eksctl delete cluster -f /Users/lrochette/src/lrochette/til/classic/karpenter/cluster.yaml
+
 ```

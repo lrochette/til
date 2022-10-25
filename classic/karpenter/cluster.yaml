@@ -7,7 +7,7 @@ metadata:
   tags:
     karpenter.sh/discovery: lr4
 managedNodeGroups:
-  - instanceType: m5.large
+  - instanceType: m5.xlarge
     amiFamily: AmazonLinux2
     name: lr4-ng
     desiredCapacity: 2
