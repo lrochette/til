@@ -1,17 +1,17 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: lr4
+  name: onpremlr
   region: us-east-1
   version: "1.21"
   tags:
-    karpenter.sh/discovery: lr4
+    karpenter.sh/discovery: onpremlr
 managedNodeGroups:
   - instanceType: m5.xlarge
     amiFamily: AmazonLinux2
-    name: lr4-ng
-    desiredCapacity: 2
-    minSize: 1
-    maxSize: 10
+    name: runner-nodes
+    desiredCapacity: 3
+    minSize: 2
+    maxSize: 5
 iam:
   withOIDC: true

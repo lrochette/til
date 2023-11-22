@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: inflate
+  namespace: demo
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       app: inflate

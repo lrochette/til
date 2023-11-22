@@ -1,6 +1,6 @@
 csdp2
 brew install argocd-autopilot
-export GIT_REPO=https://github.com/lrochette/autopilot
+export GIT_REPO=https://github.com/lrochette/argocd
 
 argocd-autopilot repo bootstrap
 

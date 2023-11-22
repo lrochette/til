@@ -1,6 +1,6 @@
 # NVidia GPU enablement for runtime
 
-How to make a pipleine run on NVidia GPU enabled nodes
+How to make a pipeline run on NVidia GPU enabled nodes
 
 ## AWS/EKS
 

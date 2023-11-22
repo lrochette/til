@@ -76,10 +76,22 @@ helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --vers
   --wait
 ```
 
+### Attach EBS  policy to role
+aws iam attach-role-policy --role-name ${CLUSTER_NAME}-karpenter \
+  --policy-arn arn:aws:iam::835357571861:policy/policy-runner-ebs
+aws iam attach-role-policy --role-name ${CLUSTER_NAME}-karpenter \
+  --policy-arn arn:aws:iam::835357571861:policy/dind-volume-ebs   
+
 ### Provisioner
 
 ```
-kubectl apply -f karpenter/provisioner.yaml
+kubectl apply -f ~/src/lrochette/til/classic/karpenter/provisioner.yaml
+```
+
+### Test
+```
+kubectl apply -f ~/src/lrochette/til/classic/karpenter/deployment.yaml
+kubectl scale deployment inflate --replicas 5
 ```
 
 

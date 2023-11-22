@@ -10,4 +10,4 @@ get_status:
       export BUILD_STRATEGY=$(curl -X GET -H "Authorization: ${{CF_API_KEY}}" "${{CF_URL}}/api/builds/${{CF_BUILD_ID}}" | jq -r '.buildStrategy')
     - echo $BUILD_STRATEGY  
 ```
-It will return "fresh-start" or "restart" 
+It will return "fresh-start", "restart-failed-steps" or "restart"
