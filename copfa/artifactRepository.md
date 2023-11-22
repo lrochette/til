@@ -40,9 +40,9 @@ gitops-runtime:
 
 Check the `argo-workflow-controller-configmap` to verify the `artifactRepository` block is present.
 
-Once this done, I had to restart the `argo-workflow-controller` pod to load the new ConfigMap.
+Once this done, you have to restart the `argo-workflow-controller` pod to load the new ConfigMap.
 
-Run a new workflow to verify the error message above has disappeared and has ben replace by a permission one like
+Run a new workflow to verify the error message above has disappeared and has ben replaced by a permission one like
 ```
 Error (exit code 1): failed to create new S3 client: AccessDenied: User: arn:aws:sts::835357571861:assumed-role/eksctl-onpremlr-nodegroup-runner-NodeInstanceRole-Q8BL8DSP476Z/i-054f107c71b5e1506 is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::835357571861:role/lr-s3-wks
 	status code: 403, request id: 83ab146f-3ff0-4abb-bb4b-65883f4d123f  
@@ -52,11 +52,11 @@ Error (exit code 1): failed to create new S3 client: AccessDenied: User: arn:aws
 
 Those were done using OIDC.
 
-### Check your OIDC
+### Check your OIDC provider
 
-1. Get the cluster OIDC url aka `https://oidc.eks.us-east-1.amazonaws.com/id/A7F0B51A0AA159E93D55D2A438A7052D`
+1. Get the cluster OIDC url aka `https://oidc.eks.us-east-1.amazonaws.com/id/A7F0B51A0AA159E93D55D2A438A7052D`. Save it for later.
 
-2. get the ARN associated with the OIDC provider for that cluster aka `arn:aws:iam::835357571861:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/A7F0B51A0AA159E93D55D2A438A7052D`
+2. get the ARN associated with the OIDC provider for that cluster aka `arn:aws:iam::835357571861:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/A7F0B51A0AA159E93D55D2A438A7052D`. Save it as well.
 
 ### Create a new Policy
 
