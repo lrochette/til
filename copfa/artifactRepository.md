@@ -157,6 +157,10 @@ gitops-runtime:
 ```
 4. Commit the code to sync again and update the runtime
 
+5. Be sure to remove SA in your workflow template as permission is based on using `workflows-default`
+
+6. For the same reason, the SA in argo-hub templates will reak as well so use the 'codefesh' branch (instead of 'HEAD') when pointing to argo-hub git-source.
+
 The final version of my change for the workflow looks like:
 ```yaml
 gitops-runtime:
