@@ -8,7 +8,7 @@ Error (exit code 1): You need to configure artifact storage. More information on
 ```
 
 ## 1- Artifact Repo
-add the following block to the resources/RUNTIME/chart/values.yaml
+add the following block to the `resources/<RUNTIME>/chart/values.yaml`
 
 ```yaml
 gitops-runtime:
@@ -76,7 +76,7 @@ Create a policy named something like `workflow-assume-role-<CLUSTER>` with the f
 ```
 
 ### Create a new Role
-this new role of type `custom trust policy` named something like workflow-<CLUSTER> where the trust policy is something like:
+this new role of type `custom trust policy` named something like `workflow-<CLUSTER>` where the trust policy is something like:
 ```
 {
     "Version": "2012-10-17",
