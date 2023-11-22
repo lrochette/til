@@ -2,13 +2,13 @@
 
 this is for a Helm installation of the GitOps Runtime
 
-If you run an error similar to:
+If you run a workflow and get an error similar to:
 ```
 Error (exit code 1): You need to configure artifact storage. More information on how to do this can be found in the docs: https://argoproj.github.io/argo-workflows/configure-artifact-repository/  
 ```
 
 ## 1- Artifact Repo
-add the following block to the resources/<RUNTIME>/chart/values.yaml
+add the following block to the resources/RUNTIME/chart/values.yaml
 
 ```yaml
 gitops-runtime:
@@ -30,7 +30,7 @@ gitops-runtime:
 
 **Notes:**
   - useDefaultArtifactRepo: not sure why
-  - useStaticCredentials: to force the use of SA instead of static credentials along with
+  - useStaticCredentials: to force the use of SA instead of static credentials along with this block:
   ```yaml
   artifactRepository:
     s3:
