@@ -22,7 +22,8 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 * [Pipelines associated to a RE](classic/pipelines_for_re.md)
 
 
-### Codefresh CSDP
+### Codefresh GitOps
+* [ServiceNow integration](gitops/servicenow.md) Draft
 
 ### Python
 
