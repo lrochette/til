@@ -9,7 +9,7 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 ## Categories
 
 * [Codefresh Classic](#codefresh-classic)
-* [Codefresh CSDP](#codefresh-csdp)
+* [Codefresh GitOps](#codefresh-gitops)
 * [Python](#python)
 * [Kubernetes](#kubernetes)
 * [Mac](#mac)
@@ -24,6 +24,7 @@ Based on [Josh Branchaud's TIL](https://github.com/jbranchaud).
 
 ### Codefresh GitOps
 * [ServiceNow integration](gitops/servicenow.md) Draft
+* [Artifact repository](gitops/artifactRepository.md)
 
 ### Python
 
