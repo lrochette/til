@@ -44,7 +44,7 @@ Once this done, you have to restart the `argo-workflow-controller` pod to load t
 
 Run a new workflow to verify the error message above has disappeared and has ben replaced by a permission one like
 ```
-Error (exit code 1): failed to create new S3 client: AccessDenied: User: arn:aws:sts::835357571861:assumed-role/eksctl-onpremlr-nodegroup-runner-NodeInstanceRole-Q8BL8DSP476Z/i-054f107c71b5e1506 is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::835357571861:role/lr-s3-wks
+Error (exit code 1): failed to create new S3 client: AccessDenied: User: arn:aws:sts::835357571861:assumed-role/eksctl-lr1-nodegroup-runner-NodeInstanceRole-Q8BL8DSP476Z/i-054f107c71b5e1506 is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::835357571861:role/lr-s3-wks
 	status code: 403, request id: 83ab146f-3ff0-4abb-bb4b-65883f4d123f  
 ```
 
@@ -98,12 +98,12 @@ this new role of type `custom trust policy` named something like `workflow-<CLUS
 ```
 
 and add the policy we created in the previous step
-Finish creating the role and save the ARN aka `arn:aws:iam::835357571861:role/workflow-onpremlr`
+Finish creating the role and save the ARN aka `arn:aws:iam::835357571861:role/workflow-lr1`
 
 ### Add trust relationship to role
 
 1. Find the role indicated in the artifactRepository block at the start of this page (`arn:aws:iam::835357571861:role/lr-s3-wks`)
-2. edit the trust relationship allow AssumeRole for the one creaed in the previous step (aka `arn:aws:iam::835357571861:policy/workflow-assume-role-onpremlr``) something like
+2. edit the trust relationship allow AssumeRole for the one creaed in the previous step (aka `arn:aws:iam::835357571861:policy/workflow-assume-role-lr1``) something like
 
 ```json
 {
@@ -119,7 +119,7 @@ Finish creating the role and save the ARN aka `arn:aws:iam::835357571861:role/wo
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::835357571861:role/workflow-onpremlr"
+                "AWS": "arn:aws:iam::835357571861:role/workflow-lr1"
             },
             "Action": "sts:AssumeRole"
         }
@@ -147,13 +147,13 @@ gitops-runtime:
     server:
       serviceAccount:
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-onpremlr"
+          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-lr1"
     workflow:
       serviceAccount:
         create: true
         name: workflows-default
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-onpremlr"    
+          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-lr1"    
 ```
 4. Commit the code to sync again and update the runtime
 
@@ -184,12 +184,12 @@ gitops-runtime:
     server:
       serviceAccount:
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-onpremlr"
+          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-lr1"
     workflow:
       serviceAccount:
         create: true
         name: workflows-default
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-onpremlr"    
+          eks.amazonaws.com/role-arn: "arn:aws:iam::835357571861:role/workflow-lr1"    
 
 ```
