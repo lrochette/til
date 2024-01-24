@@ -8,6 +8,9 @@ Error (exit code 1): You need to configure artifact storage. More information on
 ```
 
 ## 1- Artifact Repo
+
+Create an application for the runtime (in the UI at https://g.codefresh.io/2.0/account-settings/runtimes/<RUNTIME>/runtime-components)
+
 add the following block to the `resources/<RUNTIME>/chart/values.yaml`
 
 ```yaml
