@@ -6,14 +6,6 @@ List of clusters, usage and version
 
 | cluster  | context | version | karpenter | usage | notes |
 | -------- | ------- | ------- | --------- | ----- | ----- |
-| onpremlr | csdp    | 1.23    | no        | runner, main runtime | |
-| lrprincipal | main    | 1.25    | yes        | main cluster to use a vcluster home | |
-| cfdemo | cfdemo | 1.23 | yes | codefresh-demo cluster for deployment | Accnt - aperture-sci |
+| lropanz  | lropanz | 1.29    | yes       | gitops | |
+| lr1      | lr1     | 1.29    | yes       | runner, gitops | |
 
-## VClusters
-
-### lrprincipal
-
-| cluster  | context |  usage | notes |
-| -------- | ------- | ------ | ----- |
-| gitops   | gitops  | onprem installation for 2.0.0 | |
